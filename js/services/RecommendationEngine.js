@@ -1,22 +1,21 @@
 const W1 = 0.4; // 難しかった比率の重み
 const W2 = 0.6; // 関心の低さの重み
 const NEUTRAL_DIFFICULTY_RATIO = 0.5; // 未経験ジャンルの中立値
-const TOTAL_GENRE_COUNT = 11; // genreList.jsonのジャンル数
 const GENRE_NEUTRAL_POINT = 0.5; // genreScoreの中立値
-const GENRE_WEIGHT = 0.8; // ジャンル傾向の影響力
+const GENRE_WEIGHT = 1.2; // ジャンル傾向の影響力
 const RECOMMENDATION_COUNT = 5;
 
 export function computeGenreScores(userProfile, subjectGenreMap) {
     const takenGenres = userProfile.takenSubjects.map(name => subjectGenreMap.get(name));
     const difficultGenres = userProfile.difficultSubjects.map(name => subjectGenreMap.get(name));
 
-    const totalTakenCount = takenGenres.filter(Boolean).length;
-
     const genreTakenCounts = countByGenre(takenGenres);
     const genreDifficultCounts = countByGenre(difficultGenres);
 
     const genreScores = {};
-    const averageInterestRatio = 1 / TOTAL_GENRE_COUNT;
+    const maxTakenCount = genreTakenCounts.size > 0
+        ? Math.max(...genreTakenCounts.values())
+        : 0;
 
     for (const genre of genreTakenCounts.keys()) {
         const takenCount = genreTakenCounts.get(genre);
@@ -26,13 +25,8 @@ export function computeGenreScores(userProfile, subjectGenreMap) {
             ? difficultCount / takenCount
             : NEUTRAL_DIFFICULTY_RATIO;
 
-        const interestRatio = totalTakenCount > 0
-            ? takenCount / totalTakenCount
-            : 0;
-
-        // 平均的な関心比率(1/ジャンル数)と比べてどれだけ上振れしてるかを見る
-        // 平均以上履修してれば1(=最大の関心)扱いにする
-        const relativeInterest = Math.min(interestRatio / averageInterestRatio, 1);
+        // 一番履修数が多いジャンルを基準(1)にして、他ジャンルはその相対値にする
+        const relativeInterest = maxTakenCount > 0 ? takenCount / maxTakenCount : 0;
         const lowInterest = 1 - relativeInterest;
 
         genreScores[genre] = W1 * difficultyRatio + W2 * lowInterest;

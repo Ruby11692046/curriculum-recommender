@@ -1,7 +1,26 @@
 [
-    { "id": "q1", "trait": "practicality", "text": "座学より、実際に手を動かして作る授業の方が好きだ" },
-    { "id": "q2", "trait": "logic", "text": "物事を筋道立てて考えるのが得意だ" },
-    { "id": "q3", "trait": "expression", "text": "自分のアイデアを作品やデザインとして表現するのが好きだ" },
-    { "id": "q4", "trait": "career", "text": "将来のキャリアに直結するスキルを優先して学びたい" },
-    { "id": "q5", "trait": "exploration", "text": "答えのない問いについてじっくり考えるのが好きだ" }
+  { "id": "q1", "trait": "practicality", "text": "リアルタイムで授業を受けるほうが楽しい" },
+  { "id": "q2", "trait": "practicality", "text": "知識を学ぶだけより、実際に試してみるほうが好きだ" },
+  { "id": "q3", "trait": "practicality", "text": "実習や制作など、自分で作業する授業に興味がある" },
+  { "id": "q4", "trait": "practicality", "text": "学んだことを発表できるような機会があると嬉しい" },
+
+  { "id": "q5", "trait": "logic", "text": "物事を順序立てて考えるのが好きだ" },
+  { "id": "q6", "trait": "logic", "text": "理由や根拠を考えてから結論を出すことが多い" },
+  { "id": "q7", "trait": "logic", "text": "複雑な問題を整理して考えることに興味がある" },
+  { "id": "q8", "trait": "logic", "text": "一見すると分かりにくいことでも、仕組みを考えるのが好きだ" },
+
+  { "id": "q9", "trait": "expression", "text": "自分なりのアイデアを形にするのが好きだ" },
+  { "id": "q10", "trait": "expression", "text": "文章や画像などを使って、自分の考えを表現することに興味がある" },
+  { "id": "q11", "trait": "expression", "text": "同じものでも、自分らしい方法で表現してみたいと思う" },
+  { "id": "q12", "trait": "expression", "text": "新しいものを考えて作ることに興味がある" },
+
+  { "id": "q13", "trait": "career", "text": "将来の仕事に役立つことを優先して学びたい" },
+  { "id": "q14", "trait": "career", "text": "授業を選ぶとき、将来のキャリアに役立つかを気にする" },
+  { "id": "q15", "trait": "career", "text": "今の学びが将来どのように役立つのかを知りたい" },
+  { "id": "q16", "trait": "career", "text": "将来の選択肢を広げるための学びに関心がある" },
+
+  { "id": "q17", "trait": "exploration", "text": "答えが一つに決まっていない問いについて考えるのが好きだ" },
+  { "id": "q18", "trait": "exploration", "text": "自分がどんなことに興味を持つ人なのかを考えることがある" },
+  { "id": "q19", "trait": "exploration", "text": "「自分にとって大切なものは何か」のような問いに興味がある" },
+  { "id": "q20", "trait": "exploration", "text": "普段当たり前だと思っていることについて、改めて考えてみるのが好きだ" }
 ]

@@ -44,7 +44,8 @@ export async function fetchSubjects() {
             name: item.name,
             genre: getGenreFromNumbering(item.numbering, genreMap),
             rawTags: item.tags,
-            traits: computeSubjectTraits(item.tags, traitTagMap)
+            traits: computeSubjectTraits(item.tags, traitTagMap),
+            openingYear: item.openingYear
         }))
         .filter(subject => subject.genre !== null);
 }

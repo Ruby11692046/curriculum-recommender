@@ -3,8 +3,15 @@ import { parseCourseNames } from './services/TranscriptParser.js';
 import { renderCourseCards, getSelectedCourses } from './ui/DifficultyStep.js';
 import { userProfile } from './models/UserProfile.js';
 import { initQuestionForm, getSubjects } from './ui/QuestionForm.js';
-import { fetchSubjects, buildSubjectGenreMap } from './services/SubjectRepository.js';
-import { computeGenreScores } from './services/RecommendationEngine.js';
+import { buildSubjectGenreMap } from './services/SubjectRepository.js';
+import { computeGenreScores, selectRecommendedSubjects } from './services/RecommendationEngine.js';
+import { renderLoading, renderResult } from './ui/ResultList.js';
+import { fillSampleTranscript } from './ui/SampleDataLoader.js';
+
+// ヘッダータイトル → 最初の画面
+document.querySelector(".header-inner").addEventListener("click", () => {
+    showSection("main", "start-button");
+});
 
 // 診断を始める → 履修済み科目登録
 document.querySelector('#start-button button').addEventListener('click', () => {
@@ -34,13 +41,20 @@ document.querySelector('#skip-button').addEventListener('click', () => {
     initQuestionForm();
 });
 
+document.querySelector('#sample-data-button').addEventListener('click', fillSampleTranscript);
+
 // 診断 → 診断結果
 document.addEventListener('questions-completed', async (event) => {
     userProfile.traits = event.detail;
+
+    showSection('main', 'result');
+    renderLoading();
 
     const subjects = await getSubjects();
     const subjectGenreMap = buildSubjectGenreMap(subjects);
     userProfile.genreScores = computeGenreScores(userProfile, subjectGenreMap);
 
-    showSection('main', 'result');
+    const recommendations = selectRecommendedSubjects(userProfile, subjects);
+    renderResult(recommendations);
+    console.log('genreScores:', userProfile.genreScores);
 });

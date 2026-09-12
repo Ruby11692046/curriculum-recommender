@@ -16,7 +16,19 @@
     <main>
         <!--診断ボタン-->
         <section id="start-button" class="js-switchable is-active">
-            <button>診断を始める</button>
+            <div class="intro">
+                <h2>あなたに合う科目を診断します</h2>
+                <p>
+                    これまで履修した科目と、いくつかの質問への回答をもとに、
+                    次に履修すべき科目のハードルとおすすめを分析します。
+                </p>
+                <ol class="intro-steps">
+                    <li>履修済み科目を登録する</li>
+                    <li>いくつかの質問に答える</li>
+                    <li>あなたに合う科目が表示される</li>
+                </ol>
+                <button id="start-diagnosis-button">診断を始める</button>
+            </div>
         </section>
 
         <!--履修済み科目登録-->
@@ -41,6 +53,7 @@
                 <textarea id="course-paste" placeholder="ここに貼り付け"></textarea>
                 <div class="button-group">
                     <button id="register-button">登録する</button>
+                    <button id="sample-data-button">サンプルデータで試す</button>
                     <button id="skip-button">登録せずに進む</button>
                 </div>
             </div>
@@ -61,11 +74,14 @@
         <!--結果画面-->
         <section id="result" class="js-switchable">
             <h2>診断結果</h2>
+            <p>あなたにおすすめの科目は...</p>
+            <div class="recommendation-list"></div>
+            <div class="share-container"></div>
         </section>
     </main>
 
     <footer>
-        <!--コピーライト-->
+        <small>&copy; 2026 おすすめ履修診断</small>
     </footer>
 
     <script type="module" src="js/main.js"></script>

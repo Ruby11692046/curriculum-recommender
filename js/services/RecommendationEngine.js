@@ -1,7 +1,9 @@
 const W1 = 0.4; // 難しかった比率の重み
 const W2 = 0.6; // 関心の低さの重み
 const NEUTRAL_DIFFICULTY_RATIO = 0.5; // 未経験ジャンルの中立値
-const GENRE_PENALTY_WEIGHT = 0.5;
+const TOTAL_GENRE_COUNT = 11; // genreList.jsonのジャンル数
+const GENRE_NEUTRAL_POINT = 0.5; // genreScoreの中立値
+const GENRE_WEIGHT = 0.8; // ジャンル傾向の影響力
 const RECOMMENDATION_COUNT = 5;
 
 export function computeGenreScores(userProfile, subjectGenreMap) {
@@ -14,6 +16,7 @@ export function computeGenreScores(userProfile, subjectGenreMap) {
     const genreDifficultCounts = countByGenre(difficultGenres);
 
     const genreScores = {};
+    const averageInterestRatio = 1 / TOTAL_GENRE_COUNT;
 
     for (const genre of genreTakenCounts.keys()) {
         const takenCount = genreTakenCounts.get(genre);
@@ -27,7 +30,10 @@ export function computeGenreScores(userProfile, subjectGenreMap) {
             ? takenCount / totalTakenCount
             : 0;
 
-        const lowInterest = 1 - interestRatio;
+        // 平均的な関心比率(1/ジャンル数)と比べてどれだけ上振れしてるかを見る
+        // 平均以上履修してれば1(=最大の関心)扱いにする
+        const relativeInterest = Math.min(interestRatio / averageInterestRatio, 1);
+        const lowInterest = 1 - relativeInterest;
 
         genreScores[genre] = W1 * difficultyRatio + W2 * lowInterest;
     }
@@ -58,13 +64,16 @@ export function computeTraitsDistance(userTraits, subjectTraits) {
 
 export function computeFinalScore(userProfile, subject) {
     const distance = computeTraitsDistance(userProfile.traits, subject.traits);
-    const genrePenalty = userProfile.genreScores[subject.genre] ?? 0;
+    const genreScore = userProfile.genreScores[subject.genre] ?? GENRE_NEUTRAL_POINT;
+    const genreOffset = genreScore - GENRE_NEUTRAL_POINT;
 
-    return distance + genrePenalty * GENRE_PENALTY_WEIGHT;
+    return distance + genreOffset * GENRE_WEIGHT;
 }
 
 export function selectRecommendedSubjects(userProfile, subjects) {
-    const withScore = subjects.map(subject => ({
+    const uniqueSubjects = dedupeByName(subjects);
+
+    const withScore = uniqueSubjects.map(subject => ({
         subject,
         finalScore: computeFinalScore(userProfile, subject)
     }));
@@ -72,4 +81,14 @@ export function selectRecommendedSubjects(userProfile, subjects) {
     withScore.sort((a, b) => a.finalScore - b.finalScore);
 
     return withScore.slice(0, RECOMMENDATION_COUNT).map(entry => entry.subject);
+}
+
+function dedupeByName(subjects) {
+    const seen = new Map();
+    for (const subject of subjects) {
+        if (!seen.has(subject.name)) {
+            seen.set(subject.name, subject);
+        }
+    }
+    return Array.from(seen.values());
 }

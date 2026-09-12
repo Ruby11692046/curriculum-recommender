@@ -1,3 +1,5 @@
+import { fetchSubjects } from '../services/SubjectRepository.js';
+
 const ANSWER_OPTIONS = [
     { label: 'はい', score: 1 },
     { label: '多分はい', score: 0.75 },
@@ -8,8 +10,10 @@ const ANSWER_OPTIONS = [
 let questions = [];
 let currentIndex = 0;
 let answers = {};
+let subjectsPromise = null;
 
 export async function initQuestionForm() {
+    subjectsPromise = fetchSubjects();
     const response = await fetch('./data/questions.json');
     questions = await response.json();
     currentIndex = 0;
@@ -56,4 +60,8 @@ function goToNextQuestion() {
     } else {
         document.dispatchEvent(new CustomEvent('questions-completed', { detail: answers }));
     }
+}
+
+export async function getSubjects() {
+    return subjectsPromise;
 }

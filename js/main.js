@@ -2,7 +2,7 @@ import { showSection } from './ui/Navigation.js';
 import { parseCourseNames } from './services/TranscriptParser.js';
 import { renderCourseCards, getSelectedCourses } from './ui/DifficultyStep.js';
 import { userProfile } from './models/UserProfile.js';
-import { initQuestionForm } from './ui/QuestionForm.js';
+import { initQuestionForm, getSubjects } from './ui/QuestionForm.js';
 import { fetchSubjects, buildSubjectGenreMap } from './services/SubjectRepository.js';
 import { computeGenreScores } from './services/RecommendationEngine.js';
 
@@ -38,10 +38,9 @@ document.querySelector('#skip-button').addEventListener('click', () => {
 document.addEventListener('questions-completed', async (event) => {
     userProfile.traits = event.detail;
 
-    const subjects = await fetchSubjects();
+    const subjects = await getSubjects();
     const subjectGenreMap = buildSubjectGenreMap(subjects);
     userProfile.genreScores = computeGenreScores(userProfile, subjectGenreMap);
 
-    console.log(userProfile);
     showSection('main', 'result');
 });

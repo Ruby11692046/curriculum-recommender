@@ -1,6 +1,9 @@
+import { computeSubjectTraits } from './TagClassifier.js';
+
 const API_URL = 'https://api.syllabus.zen.ac.jp/search';
 
 let genreMapCache = null;
+let traitTagMapCache = null;
 
 async function loadGenreMap() {
     if (genreMapCache) return genreMapCache;
@@ -9,25 +12,50 @@ async function loadGenreMap() {
     return genreMapCache;
 }
 
-export function getGenreFromNumbering(numbering, genreMap) { //テストのためexportをつけた
+export function getGenreFromNumbering(numbering, genreMap) {
     const prefix = numbering.split('-')[0];
     return genreMap[prefix] || null;
 }
 
+async function fetchAllPages() {
+    const firstResponse = await fetch(`${API_URL}?page=0`);
+    const firstData = await firstResponse.json();
+
+    const allSubjects = [...firstData.subjects];
+    const totalPages = firstData.totalPages;
+
+    for (let page = 1; page < totalPages; page++) {
+        const response = await fetch(`${API_URL}?page=${page}`);
+        const data = await response.json();
+        allSubjects.push(...data.subjects);
+    }
+
+    return allSubjects;
+}
+
 export async function fetchSubjects() {
     const genreMap = await loadGenreMap();
-    const response = await fetch(API_URL);
-    const rawData = await response.json();
+    const traitTagMap = await loadTraitTagMap();
+    const rawSubjects = await fetchAllPages();
 
-    return rawData
+    return rawSubjects
         .map(item => ({
             numbering: item.numbering,
             name: item.name,
             genre: getGenreFromNumbering(item.numbering, genreMap),
-            rawTags: item.tags
+            rawTags: item.tags,
+            traits: computeSubjectTraits(item.tags, traitTagMap)
         }))
         .filter(subject => subject.genre !== null);
 }
+
+async function loadTraitTagMap() {
+    if (traitTagMapCache) return traitTagMapCache;
+    const response = await fetch('./data/traitTagMap.json');
+    traitTagMapCache = await response.json();
+    return traitTagMapCache;
+}
+
 
 export function buildSubjectGenreMap(subjects) {
     const map = new Map();

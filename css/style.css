@@ -1,17 +1,7 @@
-/* section遷移 */
-.js-switchable {
-    display: none;
-}
+/* =========================
+ベース
+========================= */
 
-.js-switchable.is-active {
-    display: block;
-}
-
-/*======
-デザイン
-======*/
-
-/* 全体 */
 * {
     box-sizing: border-box;
 }
@@ -29,7 +19,17 @@ body {
     line-height: 1.6;
 }
 
-/* 全体 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* =========================
+レイアウト骨格
+========================= */
+
 header {
     background-color: #ffffff;
     border-bottom: 1px solid #e5e7eb;
@@ -47,7 +47,47 @@ header h1 {
     margin: 0 auto;
 }
 
-/* ボタン */
+main {
+    width: min(100% - 32px, 1000px);
+    margin: 40px auto;
+}
+
+section {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+footer {
+    padding: 32px 24px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+画面(section)遷移
+========================= */
+
+.js-switchable {
+    display: none;
+}
+
+.js-switchable.is-active {
+    display: block;
+}
+
+
+/* =========================
+共通コンポーネント：ボタン
+========================= */
 
 button {
     appearance: none;
@@ -82,22 +122,33 @@ button:focus-visible {
     outline-offset: 2px;
 }
 
-/* カード */
-.course-card {
-    padding: 12px 16px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    background: #fff;
+/* ボタンを横並び＋右寄せにするラッパー */
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+/* スキップなど、控えめに見せたいボタン */
+#skip-button {
+    background-color: transparent;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+    box-shadow: none;
+}
+
+#skip-button:hover {
+    background-color: #f3f4f6;
     color: #222;
-    cursor: pointer;
+    box-shadow: none;
 }
 
-.course-card.is-selected {
-    background: #ffe08a;
-    border-color: #e0a800;
-}
 
-/* テキストエリア */
+/* =========================
+共通コンポーネント：テキストエリア
+========================= */
+
 textarea {
     width: 100%;
     min-height: 160px;
@@ -133,138 +184,29 @@ textarea:focus {
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* 他コンテンツ類 */
-main {
-    width: min(100% - 32px, 1000px);
-    margin: 40px auto;
-}
-
-section {
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 24px;
-}
-
-section h2 {
-    margin-top: 0;
-}
-
-footer {
-    padding: 32px 24px;
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
 
 /* =========================
-   診断フォーム
+共通コンポーネント：科目カード
 ========================= */
 
-.js-switchable {
-    display: none;
-}
-
-.js-switchable.is-active {
-    display: block;
-}
-
-/* =========================
-   履修済み科目登録
-========================= */
-
-#course-registration h2 {
-    margin-bottom: 28px;
-}
-
-.explanation p {
-    flex: 1;
-    margin: 0;
-    color: #4b5563;
-    font-size: 0.95rem;
-}
-
-#course-paste {
-    display: block;
-    min-height: 180px;
-    margin-bottom: 16px;
-}
-
-
-/* ボタンを横並び＋右寄せ */
-
-.button-group {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-}
-
-#skip-button {
-    background-color: transparent;
-    color: #4b5563;
-    border: 1px solid #d1d5db;
-    box-shadow: none;
-}
-
-#skip-button:hover {
-    background-color: #f3f4f6;
+.course-card {
+    padding: 12px 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
     color: #222;
-    box-shadow: none;
+    cursor: pointer;
+}
+
+.course-card.is-selected {
+    background: #ffe08a;
+    border-color: #e0a800;
 }
 
 
 /* =========================
-   難しかった科目
+共通コンポーネント：4択カード
 ========================= */
-
-#difficulty-confirm-button {
-    display: block;
-    margin-left: auto;
-}
-
-
-/* =========================
-   診断画面
-========================= */
-
-#diagnosis {
-    padding: 36px 32px 40px;
-}
-
-#diagnosis > h2 {
-    margin-bottom: 36px;
-    text-align: center;
-}
-
-.question-container {
-    width: min(100%, 700px);
-    margin: 0 auto;
-}
-
-.question-progress {
-    margin: 0 0 12px;
-    text-align: center;
-    color: #6b7280;
-    font-size: 0.9rem;
-}
-
-.question-container h3 {
-    margin: 0 auto 32px;
-    text-align: center;
-    font-size: 1.25rem;
-    line-height: 1.7;
-}
-
-
-/* 4択 */
 
 .option-list {
     display: grid;
@@ -303,7 +245,72 @@ img {
 
 
 /* =========================
-   結果画面
+画面：履修済み科目登録
+========================= */
+
+#course-registration h2 {
+    margin-bottom: 28px;
+}
+
+.explanation p {
+    flex: 1;
+    margin: 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+#course-paste {
+    display: block;
+    min-height: 180px;
+    margin-bottom: 16px;
+}
+
+
+/* =========================
+画面：難しかった科目
+========================= */
+
+#difficulty-confirm-button {
+    display: block;
+    margin-left: auto;
+}
+
+
+/* =========================
+画面：診断フォーム
+========================= */
+
+#diagnosis {
+    padding: 36px 32px 40px;
+}
+
+#diagnosis>h2 {
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.question-container {
+    width: min(100%, 700px);
+    margin: 0 auto;
+}
+
+.question-progress {
+    margin: 0 0 12px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.question-container h3 {
+    margin: 0 auto 32px;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.7;
+}
+
+
+/* =========================
+画面：結果
 ========================= */
 
 #result h2 {
@@ -312,7 +319,7 @@ img {
 
 
 /* =========================
-   スマホ
+レスポンシブ（スマホ）
 ========================= */
 
 @media (max-width: 600px) {

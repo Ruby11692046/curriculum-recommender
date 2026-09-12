@@ -1,5 +1,5 @@
-export function showSection(id) {
-    document.querySelectorAll('main > section').forEach(section => {
-        section.classList.toggle('is-active', section.id === id);
+export function showSection(containerSelector, targetId) {
+    document.querySelectorAll(`${containerSelector} > *[id]`).forEach(el => {
+        el.classList.toggle('is-active', el.id === targetId);
     });
 }

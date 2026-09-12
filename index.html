@@ -10,27 +10,43 @@
 
 <body>
     <header>
-        <h1>おすすめ履修診断</h1>
+        <h1 class="header-inner">おすすめ履修診断</h1>
         <nav> <!--後でナビ--></nav>
     </header>
     <main>
         <!--診断ボタン-->
-        <section id="start-button" class="is-active">
+        <section id="start-button" class="js-switchable is-active">
             <button>診断を始める</button>
         </section>
 
         <!--履修済み科目登録-->
-        <section id="course-registration">
+        <section id="course-registration" class="js-switchable">
             <h2>履修済み科目の登録</h2>
+
+            <div id="paste-step"  class="js-switchable is-active">
+                <div class="explanation">
+                    <img src="" alt="">
+                    <p><!--TODO:説明文と説明用画像の用意--></p>
+                </div>
+                <textarea id="course-paste" placeholder="TODO:後でプレースホルダーを書く"></textarea>
+                <div class="button-group">
+                </div>
+            </div>
+            <div id="difficulty-step" class="js-switchable">
+                <h3>難しかった科目を選択してください</h3>
+            </div>
+            <button id="register-button">登録する</button>
+            <button id="skip-button">登録せずに進む</button>
+
         </section>
 
         <!--診断画面-->
-        <section id="diagnosis">
+        <section id="diagnosis" class="js-switchable">
             <h2>履修診断</h2>
         </section>
 
         <!--結果画面-->
-        <section id="result">
+        <section id="result" class="js-switchable">
             <h2>診断結果</h2>
         </section>
     </main>

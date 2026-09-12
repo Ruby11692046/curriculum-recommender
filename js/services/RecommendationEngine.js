@@ -4,6 +4,8 @@ const NEUTRAL_DIFFICULTY_RATIO = 0.5; // 未経験ジャンルの中立値
 const GENRE_NEUTRAL_POINT = 0.5; // genreScoreの中立値
 const GENRE_WEIGHT = 1.2; // ジャンル傾向の影響力
 const RECOMMENDATION_COUNT = 5;
+const FIXED_LOW_PRIORITY_GENRES = new Set(['基礎科目']);
+const FIXED_PENALTY = 0.5;
 
 export function computeGenreScores(userProfile, subjectGenreMap) {
     const takenGenres = userProfile.takenSubjects.map(name => subjectGenreMap.get(name));
@@ -61,11 +63,14 @@ export function computeFinalScore(userProfile, subject) {
     const genreScore = userProfile.genreScores[subject.genre] ?? GENRE_NEUTRAL_POINT;
     const genreOffset = genreScore - GENRE_NEUTRAL_POINT;
 
-    return distance + genreOffset * GENRE_WEIGHT;
+    const fixedPenalty = FIXED_LOW_PRIORITY_GENRES.has(subject.genre) ? FIXED_PENALTY : 0;
+
+    return distance + genreOffset * GENRE_WEIGHT + fixedPenalty;
 }
 
 export function selectRecommendedSubjects(userProfile, subjects) {
-    const uniqueSubjects = dedupeByName(subjects);
+    const takenSet = new Set(userProfile.takenSubjects);
+    const uniqueSubjects = dedupeByName(subjects).filter(subject => !takenSet.has(subject.name));
 
     const withScore = uniqueSubjects.map(subject => ({
         subject,

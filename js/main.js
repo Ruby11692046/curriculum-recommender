@@ -23,7 +23,7 @@ document.querySelector('#register-button').addEventListener('click', () => {
 document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {
     userProfile.difficultSubjects = getSelectedCourses();
 
-    console.log(userProfile);
+    console.log(userProfile); //TODO:userProfileの使用
 
     showSection('main', 'diagnosis');
 });

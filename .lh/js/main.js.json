@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 20,
+            "activePatchIndex": 27,
             "patches": [
                 {
                     "date": 1789181250566,
@@ -88,6 +88,34 @@
                 {
                     "date": 1789189884759,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     renderCourseCards(courseNames);\n     showSection('#course-registration', 'difficulty-step');\n });\n \n-// 登録する → 難しかった科目選択ステップ\n+// 登録する → 診断\n document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {\n     userProfile.difficultSubjects = getSelectedCourses();\n \n     console.log(userProfile);\n"
+                },
+                {
+                    "date": 1789195841211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n document.querySelector('#register-button').addEventListener('click', () => {\n     const rawText = document.querySelector('#course-paste').value;\n     const courseNames = parseCourseNames(rawText);\n \n-    userProfile.takenSubjects = courseNames;\n+    // userProfile.takenSubjects = courseNames;\n \n     renderCourseCards(courseNames);\n     showSection('#course-registration', 'difficulty-step');\n });\n"
+                },
+                {
+                    "date": 1789195897239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n document.querySelector('#register-button').addEventListener('click', () => {\n     const rawText = document.querySelector('#course-paste').value;\n     const courseNames = parseCourseNames(rawText);\n \n-    // userProfile.takenSubjects = courseNames;\n+    userProfile.takenSubjects = courseNames;\n \n     renderCourseCards(courseNames);\n     showSection('#course-registration', 'difficulty-step');\n });\n"
+                },
+                {
+                    "date": 1789195979485,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n     showSection('#course-registration', 'difficulty-step');\n });\n \n // 登録する → 診断\n-document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {\n+document.querySelector('#register-button').addEventListener('click', () => {\n     userProfile.difficultSubjects = getSelectedCourses();\n \n     console.log(userProfile);\n \n"
+                },
+                {
+                    "date": 1789196001302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n     showSection('#course-registration', 'difficulty-step');\n });\n \n // 登録する → 診断\n-document.querySelector('#register-button').addEventListener('click', () => {\n+document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {\n     userProfile.difficultSubjects = getSelectedCourses();\n \n     console.log(userProfile);\n \n"
+                },
+                {
+                    "date": 1789196158985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,8 @@\n // 登録する → 診断\n document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {\n     userProfile.difficultSubjects = getSelectedCourses();\n \n-    console.log(userProfile);\n+    console.log(userProfile); //TODO: \n \n     showSection('main', 'diagnosis');\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789196166546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,8 @@\n // 登録する → 診断\n document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {\n     userProfile.difficultSubjects = getSelectedCourses();\n \n-    console.log(userProfile); //TODO: \n+    console.log(userProfile); //TODO:\n \n     showSection('main', 'diagnosis');\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789196177111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,8 @@\n // 登録する → 診断\n document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {\n     userProfile.difficultSubjects = getSelectedCourses();\n \n-    console.log(userProfile); //TODO:\n+    console.log(userProfile); //TODO:userProfileの使用\n \n     showSection('main', 'diagnosis');\n });\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1789181250566,

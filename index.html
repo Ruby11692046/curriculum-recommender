@@ -23,31 +23,39 @@
         <section id="course-registration" class="js-switchable">
             <h2>履修済み科目の登録</h2>
 
-            <div id="paste-step"  class="js-switchable is-active">
+            <div id="paste-step" class="js-switchable is-active">
                 <div class="explanation">
                     <img src="" alt="操作画面の例">
                     <p>
                         ZEN Portalから履修済み科目を取得する方法<br>
                         <br>
+                        ZEN Portalの 成績→成績照会 を開く<br>
+                        PCの場合: Ctrl (Macの方はcommand)+Aで全部選択し、Ctrl+Cでコピー<br>
+                        下記の入力欄に貼り付けをしてください。<br>
+                        <br>
+                        スマホの場合: どこかしらの文字を長押し、項目の中からすべてを選択をタップ、その後コピーをタップ<br>
+                        下記の入力欄に貼り付けをしてください。<br>
 
                     </p>
                 </div>
-                <textarea id="course-paste" placeholder="TODO:後でプレースホルダーを書く"></textarea>
+                <textarea id="course-paste" placeholder="ここに貼り付け"></textarea>
                 <div class="button-group">
+                    <button id="register-button">登録する</button>
+                    <button id="skip-button">登録せずに進む</button>
                 </div>
             </div>
             <div id="difficulty-step" class="js-switchable">
                 <h3>難しかった科目を選択してください</h3>
                 <div class="course-list"></div>
+                <button id="difficulty-confirm-button">決定する</button>
             </div>
-            <button id="register-button">登録する</button>
-            <button id="skip-button">登録せずに進む</button>
 
         </section>
 
         <!--診断画面-->
         <section id="diagnosis" class="js-switchable">
             <h2>履修診断</h2>
+            
         </section>
 
         <!--結果画面-->

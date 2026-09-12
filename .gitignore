@@ -1,5 +1,6 @@
-# 拡張機能により生成されたlocal historyフォルダ
+# 拡張機能により生成されたフォルダ
 .lh
+.vscode
 
 #個人情報を記載しているテスト
 /test/TranscriptParser.test.js

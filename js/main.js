@@ -2,6 +2,9 @@ import { showSection } from './ui/Navigation.js';
 import { parseCourseNames } from './services/TranscriptParser.js';
 import { renderCourseCards, getSelectedCourses } from './ui/DifficultyStep.js';
 import { userProfile } from './models/UserProfile.js';
+import { initQuestionForm } from './ui/QuestionForm.js';
+import { fetchSubjects, buildSubjectGenreMap } from './services/SubjectRepository.js';
+import { computeGenreScores } from './services/RecommendationEngine.js';
 
 // 診断を始める → 履修済み科目登録
 document.querySelector('#start-button button').addEventListener('click', () => {
@@ -22,8 +25,23 @@ document.querySelector('#register-button').addEventListener('click', () => {
 // 登録する → 診断
 document.querySelector('#difficulty-confirm-button').addEventListener('click', () => {
     userProfile.difficultSubjects = getSelectedCourses();
-
-    console.log(userProfile); //TODO:userProfileの使用
-
     showSection('main', 'diagnosis');
+    initQuestionForm();
+});
+
+document.querySelector('#skip-button').addEventListener('click', () => {
+    showSection('main', 'diagnosis');
+    initQuestionForm();
+});
+
+// 診断 → 診断結果
+document.addEventListener('questions-completed', async (event) => {
+    userProfile.traits = event.detail;
+
+    const subjects = await fetchSubjects();
+    const subjectGenreMap = buildSubjectGenreMap(subjects);
+    userProfile.genreScores = computeGenreScores(userProfile, subjectGenreMap);
+
+    console.log(userProfile);
+    showSection('main', 'result');
 });

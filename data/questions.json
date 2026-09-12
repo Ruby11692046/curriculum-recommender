@@ -1,0 +1,7 @@
+[
+    { "id": "q1", "trait": "practicality", "text": "座学より、実際に手を動かして作る授業の方が好きだ" },
+    { "id": "q2", "trait": "logic", "text": "物事を筋道立てて考えるのが得意だ" },
+    { "id": "q3", "trait": "expression", "text": "自分のアイデアを作品やデザインとして表現するのが好きだ" },
+    { "id": "q4", "trait": "career", "text": "将来のキャリアに直結するスキルを優先して学びたい" },
+    { "id": "q5", "trait": "exploration", "text": "答えのない問いについてじっくり考えるのが好きだ" }
+]

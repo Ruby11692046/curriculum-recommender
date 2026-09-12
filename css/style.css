@@ -133,7 +133,7 @@ textarea:focus {
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* コンテンツ */
+/* 他コンテンツ類 */
 main {
     width: min(100% - 32px, 1000px);
     margin: 40px auto;
@@ -156,4 +156,199 @@ footer {
     text-align: center;
     color: #666;
     font-size: 0.9rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================
+   診断フォーム
+========================= */
+
+.js-switchable {
+    display: none;
+}
+
+.js-switchable.is-active {
+    display: block;
+}
+
+/* =========================
+   履修済み科目登録
+========================= */
+
+#course-registration h2 {
+    margin-bottom: 28px;
+}
+
+.explanation p {
+    flex: 1;
+    margin: 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+#course-paste {
+    display: block;
+    min-height: 180px;
+    margin-bottom: 16px;
+}
+
+
+/* ボタンを横並び＋右寄せ */
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+#skip-button {
+    background-color: transparent;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+    box-shadow: none;
+}
+
+#skip-button:hover {
+    background-color: #f3f4f6;
+    color: #222;
+    box-shadow: none;
+}
+
+
+/* =========================
+   難しかった科目
+========================= */
+
+#difficulty-confirm-button {
+    display: block;
+    margin-left: auto;
+}
+
+
+/* =========================
+   診断画面
+========================= */
+
+#diagnosis {
+    padding: 36px 32px 40px;
+}
+
+#diagnosis > h2 {
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.question-container {
+    width: min(100%, 700px);
+    margin: 0 auto;
+}
+
+.question-progress {
+    margin: 0 0 12px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.question-container h3 {
+    margin: 0 auto 32px;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.7;
+}
+
+
+/* 4択 */
+
+.option-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.option-card {
+    width: 100%;
+    min-height: 64px;
+    padding: 14px 20px;
+
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    box-shadow: none;
+}
+
+.option-card:hover {
+    background-color: #f8fafc;
+    color: #2563eb;
+    border-color: #93c5fd;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+}
+
+.option-card:active {
+    background-color: #eff6ff;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   結果画面
+========================= */
+
+#result h2 {
+    margin-bottom: 28px;
+}
+
+
+/* =========================
+   スマホ
+========================= */
+
+@media (max-width: 600px) {
+
+    .explanation {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .explanation img {
+        width: 100%;
+        max-width: none;
+    }
+
+    .button-group {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+
+    #diagnosis {
+        padding: 28px 18px 32px;
+    }
+
+    .question-container h3 {
+        font-size: 1.1rem;
+    }
+
+    .option-list {
+        grid-template-columns: 1fr;
+    }
+
+    .option-card {
+        min-height: 56px;
+    }
 }

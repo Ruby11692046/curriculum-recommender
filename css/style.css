@@ -82,6 +82,21 @@ button:focus-visible {
     outline-offset: 2px;
 }
 
+/* カード */
+.course-card {
+    padding: 12px 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    color: #222;
+    cursor: pointer;
+}
+
+.course-card.is-selected {
+    background: #ffe08a;
+    border-color: #e0a800;
+}
+
 /* テキストエリア */
 textarea {
     width: 100%;

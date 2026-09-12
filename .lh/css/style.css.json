@@ -1,0 +1,34 @@
+{
+    "sourceFile": "css/style.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1789180476104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1789180490217,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,2 @@\n-.is-hidden { display: none; }\n\\ No newline at end of file\n+.is-hidden { display: none; }\n+\n"
+                },
+                {
+                    "date": 1789180498477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,3 @@\n .is-hidden { display: none; }\n \n+.is-active { display: ;}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789180503956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n .is-hidden { display: none; }\n \n-.is-active { display: ;}\n\\ No newline at end of file\n+.is-active { display: block;}\n"
+                },
+                {
+                    "date": 1789180614521,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,7 @@\n-.is-hidden { display: none; }\n+main section {\n+    display: none;\n+}\n \n-.is-active { display: block;}\n+main section.is-active {\n+    display: block;\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1789180476104,
+            "name": "Commit-0",
+            "content": ".is-hidden { display: none; }"
+        }
+    ]
+}

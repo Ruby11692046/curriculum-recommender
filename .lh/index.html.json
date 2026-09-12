@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1789177936679,
@@ -12,6 +12,38 @@
                 {
                     "date": 1789177943592,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,11 @@\n-html\n\\ No newline at end of file\n+<!DOCTYPE html>\n+<html lang=\"ja\">\n+<head>\n+    <meta charset=\"UTF-8\">\n+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n+    <title>Document</title>\n+</head>\n+<body>\n+    \n+</body>\n+</html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789178680099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n <html lang=\"ja\">\n <head>\n     <meta charset=\"UTF-8\">\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n-    <title>Document</title>\n+    <title>おすすめ履修科目診断</title>\n </head>\n <body>\n     \n </body>\n"
+                },
+                {
+                    "date": 1789178832124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>おすすめ履修科目診断</title>\n </head>\n <body>\n-    \n+    <head>  </head>\n </body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789178840838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,7 @@\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>おすすめ履修科目診断</title>\n </head>\n <body>\n-    <head>  </head>\n+    he\n </body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789178846890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,9 @@\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>おすすめ履修科目診断</title>\n </head>\n <body>\n-    he\n+    <header>\n+        \n+    </header>\n </body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789178854399,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,6 +8,7 @@\n <body>\n     <header>\n         \n     </header>\n+\n </body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789179120176,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,13 @@\n <head>\n     <meta charset=\"UTF-8\">\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>おすすめ履修科目診断</title>\n+    <link rel=\"stylesheet\" href=\"css/style.css\">\n </head>\n <body>\n     <header>\n-        \n+\n     </header>\n \n </body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789179163002,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,6 @@\n \n     </header>\n \n </body>\n+\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789179191306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,19 @@\n <!DOCTYPE html>\n <html lang=\"ja\">\n+\n <head>\n     <meta charset=\"UTF-8\">\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>おすすめ履修科目診断</title>\n     <link rel=\"stylesheet\" href=\"css/style.css\">\n </head>\n+\n <body>\n     <header>\n \n     </header>\n \n </body>\n <script type=\"module\" src=\"js/main.js\"></script>\n+\n </html>\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1789177936679,

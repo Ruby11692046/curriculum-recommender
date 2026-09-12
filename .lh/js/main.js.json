@@ -1,0 +1,42 @@
+{
+    "sourceFile": "js/main.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1789181250566,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1789181609556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,6 @@\n-import { showSection } from './ui/Navigation.js';\n\\ No newline at end of file\n+import { showSection } from './ui/Navigation.js';\n+\n+// 診断を始める → 履修登録画面へ\n+document.querySelector('#start-button button').addEventListener('click', () => {\n+    showSection('course-registration');\n+});\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789181662516,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { showSection } from './ui/Navigation.js';\n \n-// 診断を始める → 履修登録画面へ\n+/\n document.querySelector('#start-button button').addEventListener('click', () => {\n     showSection('course-registration');\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789181682693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { showSection } from './ui/Navigation.js';\n \n-/\n+// 診断を始める → \n document.querySelector('#start-button button').addEventListener('click', () => {\n     showSection('course-registration');\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789181690885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { showSection } from './ui/Navigation.js';\n \n-// 診断を始める → \n+// 診断を始める → 履修登録\n document.querySelector('#start-button button').addEventListener('click', () => {\n     showSection('course-registration');\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789181698206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { showSection } from './ui/Navigation.js';\n \n-// 診断を始める → 履修登録\n+// 診断を始める → 履修済み登録\n document.querySelector('#start-button button').addEventListener('click', () => {\n     showSection('course-registration');\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1789181704372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import { showSection } from './ui/Navigation.js';\n \n-// 診断を始める → 履修済み登録\n+// 診断を始める → 履修済み科目登録\n document.querySelector('#start-button button').addEventListener('click', () => {\n     showSection('course-registration');\n\\ No newline at end of file\n-});\n+});\n+\n"
+                }
+            ],
+            "date": 1789181250566,
+            "name": "Commit-0",
+            "content": "import { showSection } from './ui/Navigation.js';"
+        }
+    ]
+}

@@ -8,8 +8,17 @@ import { computeGenreScores, selectRecommendedSubjects } from './services/Recomm
 import { renderLoading, renderResult } from './ui/ResultList.js';
 import { fillSampleTranscript } from './ui/SampleDataLoader.js';
 
-// ヘッダータイトル → 最初の画面
+// ヘッダータイトル → 最初の画面、初期化
 document.querySelector(".header-inner").addEventListener("click", () => {
+    userProfile.takenSubjects = [];
+    userProfile.difficultSubjects = [];
+    userProfile.questionAnswers = [];
+    userProfile.genreScores = {};
+    userProfile.traits = {};
+
+    document.querySelector('#course-paste').value = '';
+
+    showSection('#course-registration', 'paste-step');
     showSection("main", "start-button");
 });
 
@@ -56,5 +65,4 @@ document.addEventListener('questions-completed', async (event) => {
 
     const recommendations = selectRecommendedSubjects(userProfile, subjects);
     renderResult(recommendations);
-    console.log('genreScores:', userProfile.genreScores);
 });

@@ -4,3 +4,6 @@
 
 #個人情報を記載しているテスト
 /test/TranscriptParser.test.js
+
+#謎
+.DS_Store
